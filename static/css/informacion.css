@@ -1,0 +1,41 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/img/fondo.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Estilos para el contenedor del párrafo */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo del contenedor con transparencia */
+}
+
+/* Estilos para el párrafo */
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #000000; /* Color del texto */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 780px; /* Ancho máximo del párrafo */
+}
+
+/* Estilos adicionales para resaltar el texto */
+p strong {
+    font-weight: bold;
+    color: #007BFF; /* Color de resaltado */
+}
+
+/* Estilos adicionales para el párrafo */
+p:hover {
+    background-color: rgba(255, 255, 255, 1); /* Fondo sólido al pasar el mouse */
+}

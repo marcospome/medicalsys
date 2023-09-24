@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="{% static 'css/home.css' %}" rel="stylesheet" />
+    <title>MedicalSys</title>
+  </head>
+    {% include 'home/base/header.html' %}
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="content">
+          <h1><span>Servicios medicos</span></h1>
+          <p>
+            Ofrecemos atención médica de primer nivel, fusionando experiencia experta, tecnología avanzada y atención personalizada. Diagnósticos precisos, tratamientos avanzados y un entorno acogedor se combinan para brindar excelencia en salud y bienestar.
+          </p>
+          <button class="btn">Quiero asociarme</button>
+        </div>
+        <div class="image">
+          <span class="image__bg"></span>
+          <img src="{% static 'img/doctor.png' %}" alt="header image" />
+          <div class="image__content image__content__1">
+            <span><i class="ri-user-3-line"></i></span>
+            <div class="details">
+              <h4>1520+</h4>
+              <p>Beneficios</p>
+            </div>
+          </div>
+          <div class="image__content image__content__2">
+            <ul>
+              <li>
+                <span><i class="ri-check-line"></i></span>
+                Obten un 20% de descuento por el primer mes.
+              </li>
+              <li>
+                <span><i class="ri-check-line"></i></span>
+                Doctores expertos.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para centrar los botones */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Color de fondo opcional */
+}
+
+.button {
+    width: 200px;
+    height: 50px;
+    background-color: #1abc9c;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos adicionales al pasar el mouse */
+.button:hover {
+    background-color: #159279;
+}
+
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  /* Ajusta los estilos según tus necesidades */
+  
