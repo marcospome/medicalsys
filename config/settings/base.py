@@ -28,6 +28,28 @@ INSTALLED_APPS = [
     'apps.user',
 ]
 
+JAZZMIN_SETTINGS = {
+    "site_title": "MedicalSys",
+    "site_header": "Library",
+    "site_brand": "MedicalSys",
+    "site_logo": "/img/logo2.png",
+    "site_icon": "/img/logo2.png",
+    "welcome_sign": "Ingresar las credenciales de administrador",
+    "changeform_format": "carousel",
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "departament.departament": "fas fa-hospital-user",
+        "employee.shifts": "far fa-calendar-plus",
+        "employee.employee": "fas fa-address-card",
+        "user.user": "far fa-address-card",
+    },
+    }
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

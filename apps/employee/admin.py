@@ -8,7 +8,7 @@ class EmployeeAdmin(admin.ModelAdmin):
         'last_name',
         'age_calculator',
         'phone',
-        #'departament',
+        'departament',
         'job',
         'status',
     )

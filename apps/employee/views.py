@@ -14,6 +14,8 @@ class NewShiftView(CreateView):
     template_name = 'user/turnos.html' # Declaramos el template    #success_url = '/success'  A donde redireccionar una vez que se apreta el boton de post.
     form_class = ShiftsForm
     success_url = reverse_lazy('employee_app:correcto') #Forma más eficiente de declarar URLS utilizando el paquete reverse_lazy | Declaramos un nombre más corto en urls.py
+    
+
 
 class SuccessView(TemplateView): #Clase del tipo TemplateView solo sirve para declarar un template.
     template_name = "employee/success.html"  # Declaramos el template

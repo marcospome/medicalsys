@@ -8,7 +8,7 @@ class Departament(models.Model):
 
     class Meta:
         verbose_name = 'Departamento'
-        verbose_name_plural = 'Registro Departamentos'
+        verbose_name_plural = 'Departamentos'
         unique_together = ('name', 'shor_name')
 
     def __str__(self):
