@@ -41,26 +41,5 @@ class Employee(models.Model):
 
     def __str__(self):
         return 'Especialidad:'+ str(self.get_job_display()) + ' | ' + self.first_name + ' ' + self.last_name
-    
 
-class Shifts(models.Model):
-    SHIFTS_CHOICES = (
-        ('0', '8:00'),
-        ('1', '8:30'),
-        ('2', '9:00'),
-        ('3', '10:00'),
-        ('4', '11:00'),
-    )
-
-    dni = models.CharField('DNI del Paciente', max_length=8) # blank=True/null=True <- no es obligatorio llenar un campo de texto.
-    date = models.DateField('Fecha', auto_now=False, auto_now_add=False)
-    time = models.CharField('Horario', max_length=1, choices=SHIFTS_CHOICES)
-    employee = models.ManyToManyField(Employee, verbose_name='Especilista')
-
-    
-
-
-    class Meta:
-        verbose_name = 'Turnos'
-        verbose_name_plural = 'Registro de Turnos'
 

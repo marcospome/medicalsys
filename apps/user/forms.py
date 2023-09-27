@@ -1,6 +1,5 @@
 from django import forms
-from .models import Shifts
-from apps.user.models import User
+from .models import User, Shifts
 
 class ShiftsForm(forms.ModelForm):
     """Formulario para Shifts."""

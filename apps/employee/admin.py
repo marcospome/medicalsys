@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Employee, Shifts
+from .models import Employee
 from datetime import date
 # Register your models here.
 class EmployeeAdmin(admin.ModelAdmin):
@@ -33,22 +33,4 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_filter = ['job', 'departament__name', 'status',] # Filtro de busqueda por trabajo.
     #filter_horizontal = ('skill',)
 
-
-class ShiftsAdmin(admin.ModelAdmin):
-    list_display = (
-        'dni',
-        'date',
-        'time',
-    )
-    list_filter = ['date', 'time',] # Filtro de busqueda por trabajo.
-
-
-    
-    search_fields = ('dni',) # Barra de busqueda por apellido.
-    #filter_horizontal = ('skill',)
-
-
-
-
 admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(Shifts, ShiftsAdmin)

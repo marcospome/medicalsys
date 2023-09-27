@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, History, Shifts
 from datetime import date
 
 # Register your models here.
@@ -33,4 +33,28 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ['status',] # Filtro de busqueda por trabajo.
 
 
+
+class HistoryAdmin(admin.ModelAdmin):
+        list_display = (
+        'user',
+        'date',
+    )
+        
+class ShiftsAdmin(admin.ModelAdmin):
+    list_display = (
+        'dni',
+        'date',
+        'time',
+    )
+    list_filter = ['date', 'time',] # Filtro de busqueda por trabajo.
+
+
+    
+    search_fields = ('dni',) # Barra de busqueda por apellido.
+    #filter_horizontal = ('skill',)
+
+
+admin.site.register(Shifts, ShiftsAdmin)
 admin.site.register(User, UserAdmin)
+admin.site.register(History, HistoryAdmin)
+

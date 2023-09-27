@@ -1,4 +1,6 @@
 from django.db import models
+from apps.employee.models import Employee
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class User(models.Model):
@@ -27,3 +29,36 @@ class User(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+    
+class History(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Paciente')
+    history = RichTextField('Historial')
+    date = models.DateField('Fecha del historial', auto_now=True)
+
+    class Meta:
+        verbose_name = 'Historial'
+        verbose_name_plural = 'Historiales medicos'
+
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name + ' | Fecha del historial: ' + str(self.date)
+
+class Shifts(models.Model):
+    SHIFTS_CHOICES = (
+        ('0', '8:00'),
+        ('1', '8:30'),
+        ('2', '9:00'),
+        ('3', '10:00'),
+        ('4', '11:00'),
+    )
+
+    dni = models.CharField('DNI del Paciente', max_length=8) # blank=True/null=True <- no es obligatorio llenar un campo de texto.
+    date = models.DateField('Fecha', auto_now=False, auto_now_add=False)
+    time = models.CharField('Horario', max_length=1, choices=SHIFTS_CHOICES)
+    medic = models.ForeignKey(Employee, on_delete=models.CASCADE, verbose_name='Especialista')
+
+    
+
+
+    class Meta:
+        verbose_name = 'Turnos'
+        verbose_name_plural = 'Registro de Turnos'
