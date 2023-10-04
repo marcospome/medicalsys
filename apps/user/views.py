@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import (ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView)
-from .models import Shifts
+from .models import Shifts, User
 from django.urls import reverse_lazy
 from .forms import *
 
@@ -15,3 +15,12 @@ class NewShiftView(CreateView):
 
 class SuccessView(TemplateView): #Clase del tipo TemplateView solo sirve para declarar un template.
     template_name = "employee/success.html"  # Declaramos el template
+
+
+class UserListView(ListView):
+    template_name = "user/lista.html"
+    context_object_name = 'lista_usuarios'
+
+    def get_queryset(self):
+
+        return User.objects.all()

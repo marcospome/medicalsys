@@ -39,6 +39,11 @@ STATICFILES_DIRS = [
 LANGUAGE_CODE = "es-ar"
 
 
+MEDIA_URL = 'media/' # URL donde se redirige al hacer click en la imagen
+
+MEDIA_ROOT = os.path.join(BASE_DIR,"media") # Ruta donde esta la carpeta media
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
