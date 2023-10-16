@@ -1,0 +1,16 @@
+{% load static %}
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link type="text/css" href="{% static 'css/base/header.css' %}" rel="stylesheet" />
+  </head>
+<header>
+    <div class="nav__logo">MedicalSys</div>
+    <ul class="nav__links">
+      <li class="link"><a href="/">Inicio</a></li>
+      <li class="link"><a href="/informacion">Información</a></li>
+      <li class="link"><a href="/especialidades">Especialidades</a></li>
+    </ul>
+    <button class="btn" onclick="window.location.href = './admin';">Iniciar sesión</button>
+  </header>
+
+  
