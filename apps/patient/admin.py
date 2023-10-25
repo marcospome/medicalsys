@@ -45,6 +45,8 @@ class PacienteTratamientoMedicoAdmin(admin.ModelAdmin):
 class MedicacionAdmin(admin.ModelAdmin):
     list_display = ('medicamento', 'dosis', 'fecha_desde', 'fecha_hasta')
 
+admin.site.register(Certificado)
+admin.site.register(TipoCertificado)
 admin.site.register(TipoTelefono)
 admin.site.register(Paciente, PacienteAdmin)
 admin.site.register(Domicilio, DomicilioAdmin)

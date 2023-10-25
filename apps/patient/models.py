@@ -8,16 +8,33 @@ from django.utils import timezone
 class TipoTelefono(models.Model):
     descripcion = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = 'Tipo de telefono'
+        verbose_name_plural = 'Tipos de telefono'
+
     def __str__(self):  
         return self.descripcion
     
 # ----------- Modelo "PACIENTE" -----------
 class Paciente(models.Model):
-    dni = models.CharField(max_length=8)
+    SEX_CHOICES = (
+        ('0', 'Masculino'),
+        ('1', 'Femenino'),
+        ('3', 'Otro')
+    )
+
+    TIPO_PACIENTE = (
+        ('0', 'Titular'),
+        ('1', 'Familiar')
+    )
+    tipo = models.CharField('Tipo de afiliación', max_length=1, choices=TIPO_PACIENTE, default='0')
+    dni = models.CharField(max_length=8, unique=True)
+    dnititular = models.CharField('DNI del Titular',max_length=8, blank=True, null=True)
     cuit = models.CharField(max_length=20, blank=True, null=True)  # Campo opcional
     apellidos = models.CharField(max_length=100)
     nombres = models.CharField(max_length=100)
     fecha_de_nacimiento = models.DateField()
+    sex = models.CharField('Sexo', max_length=1, choices=SEX_CHOICES, default='0')
     telefonos = models.ManyToManyField(TipoTelefono, through='Telefono')  # Cambiado 'teléfonos' a 'telefonos'
     casilla_de_mail = models.EmailField(validators=[EmailValidator(message="Ingresa un correo válido")])
     condicion_de_solicitud = models.CharField(max_length=10, choices=(('ACTIVO', 'Activo'), ('INACTIVO', 'Inactivo')))
@@ -27,16 +44,13 @@ class Paciente(models.Model):
     estado_de_monotributo = models.CharField(max_length=10, choices=(('ALTA', 'Alta'), ('EN_TRAMITE', 'En trámite')))
     dni_foto_frente = models.FileField(upload_to='dni/')
     dni_foto_dorso = models.FileField(upload_to='dni/')
-    certificado_de_matrimonio = models.FileField(upload_to='certificados/')
-    certificado_de_convivencia = models.FileField(upload_to='certificados/')
-    certificado_de_tutela = models.FileField(upload_to='certificados/')
-    credencial = models.CharField(max_length=20)
+    credencial = models.AutoField(primary_key=True)
     credencial_entregada = models.BooleanField(default=False)
     observaciones = models.TextField()
 
     class Meta:
         verbose_name = 'Paciente'
-        verbose_name_plural = 'Registro de paciente'
+        verbose_name_plural = 'Registro de pacientes'
 
     # ----------- Funciones -----------
     def calcular_edad(self):
@@ -47,6 +61,31 @@ class Paciente(models.Model):
     def __str__(self):  
         return f"{self.apellidos}, {self.nombres}"
 
+
+class TipoCertificado(models.Model):
+    Tipo = models.CharField('Tipo de certificado', max_length=100)
+    descripcion = models.CharField('Descripción', max_length=50)
+    class Meta:
+        verbose_name = 'Tipo de certificado'
+        verbose_name_plural = 'Tipos de certificado'
+
+
+    def __str__(self):  
+        return f"{self.Tipo}"
+    
+
+class Certificado(models.Model):
+    certificado = models.FileField(upload_to='certificados/')
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    tipocertificado = models.ForeignKey(TipoCertificado, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = 'Certificado'
+        verbose_name_plural = 'Registro de certificados'
+
+
+    def __str__(self):  
+        return f"{self.paciente}, {self.tipocertificado}"
+    
 # Modelo "Domicilio"
 class Domicilio(models.Model):
     calle = models.CharField(max_length=100)
@@ -58,7 +97,7 @@ class Domicilio(models.Model):
 
     class Meta:
         verbose_name = 'Domicilio'
-        verbose_name_plural = 'Registro de Domicilio'
+        verbose_name_plural = 'Registro de Domicilios'
 
     # ----------- Funciones -----------
     def __str__(self):
@@ -74,7 +113,7 @@ class Referente(models.Model):
 
     class Meta:
         verbose_name = 'Referente Parroquial'
-        verbose_name_plural = 'Registro de Referente'
+        verbose_name_plural = 'Registro de Referentes'
 
     def __str__(self):
         return f"{self.apellidos}, {self.nombres}"
@@ -86,7 +125,7 @@ class Parroquia(models.Model):
 
     class Meta:
         verbose_name = 'Parroquia'
-        verbose_name_plural = 'Registro de Parroquia'
+        verbose_name_plural = 'Registro de Parroquias'
 
     def __str__(self):
         return self.nombre
@@ -99,7 +138,7 @@ class Telefono(models.Model):
 
     class Meta:
         verbose_name = 'Telefono'
-        verbose_name_plural = 'Registro de Telefono'
+        verbose_name_plural = 'Registro de Telefonos'
 
     def __str__(self):
         return f"{self.tipo}, {self.numero_de_telefono}"
@@ -110,7 +149,7 @@ class TratamientoMedico(models.Model):
 
     class Meta:
         verbose_name = 'Tratamiento Medico'
-        verbose_name_plural = 'Registro de Tratamiento'
+        verbose_name_plural = 'Tipos de tratamiento'
 
     def __str__(self):  
         return self.descripcion
@@ -124,8 +163,8 @@ class PacienteTratamientoMedico(models.Model):
     observaciones = models.TextField()
 
     class Meta:
-        verbose_name = 'Tratamiento x Paciente'
-        verbose_name_plural = 'Registro de tratamiento por paciente'
+        verbose_name = 'Tratamiento'
+        verbose_name_plural = 'Tratamientos por paciente'
 
 # Modelo "MEDICACIÓN"
 class Medicacion(models.Model):
@@ -135,8 +174,8 @@ class Medicacion(models.Model):
     fecha_hasta = models.DateField()
 
     class Meta:
-        verbose_name = 'Medicacion'
-        verbose_name_plural = 'Registro de medicaciones'
+        verbose_name = 'Medicamentos'
+        verbose_name_plural = 'Registro de medicamentos'
 
     def __str__(self):
         return self.medicamento

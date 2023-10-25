@@ -57,16 +57,22 @@ JAZZMIN_SETTINGS = {
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
         "departament.departament": "fas fa-hospital-user",
-        "user.shifts": "far fa-calendar-plus",
         "employee.employee": "fas fa-address-card",
-        "user.user": "far fa-address-card",
-        "user.history": "fas fa-file-medical-alt",
+        "patient.tratamientomedico": "fas fa-notes-medical",
+        "patient.medicacion": "fas fa-prescription-bottle",
+        "patient.paciente": "fas fa-user-injured",
+        "patient.domicilio": "fas fa-home",
+        "patient.parroquia": "fas fa-church",
+        "patient.referente": "fas fa-cross",
+        "patient.telefono": "fas fa-phone",
+        "patient.tipotelefono": "fas fa-tty",
+        "patient.pacientetratamientomedico": "fas fa-laptop-medical",
+        "patient.certificado": "fas fa-print",
+        "patient.tipocertificado": "fas fa-stamp",
     },
     }
 
-JAZZMIN_UI_TWEAKS = {
-    "theme": "darkly",
-}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
