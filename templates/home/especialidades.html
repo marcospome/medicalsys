@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link type="text/css" href="{% static 'css/home/especialidades.css' %}" rel="stylesheet" />
+    <title>MedicalSys</title>
+</head>
+{% include 'base/header.html' %}
+
+<body>
+    <div class="card-container">
+        {% for especialidad in especialidades %}
+        <div class="card">
+            <div class="card-background"></div>
+            <img src="{{especialidad.image.url}}" alt="">
+            <div class="card-content">
+                <h2>{{especialidad.name}}</h2>
+                <p class="description">{{especialidad.description}}</p> <!-- Agregamos la descripción oculta -->
+            </div>
+        </div>
+        {% endfor %}
+    </div>

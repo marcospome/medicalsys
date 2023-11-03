@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'base/header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/patient/crear-paciente.css' %}">
+    <title>Alta de afiliado</title>
+</head>
+<body>
+<div class="container">
+  <h1>Inscripción de Afiliados</h1>
+  <form method="post" id="afiliado-form">
+    {% csrf_token %}
+    <div class="error-message">
+      <!-- Muestra los errores del campo 'dni2' -->
+      {{ form.dni2.errors }}
+    </div>
+    <div class="form-group">
+      <label for="id_type">Tipo de Afiliado</label>
+      {{ form.type }}
+    </div>
+    <div class="form-group" id="dni2-group">
+        <label for="id_dni2">DNI del Titular</label>
+        {{ form.dni2 }}
+    </div>
+    <div class="form-group">
+      <label for="id_first_name">Nombre</label>
+      {{ form.first_name }}
+    </div>
+    <div class="form-group">
+      <label for="id_last_name">Apellido</label>
+      {{ form.last_name }}
+    </div>
+    <div class="form-group">
+        <label for="id_dni">Genero</label>
+        {{ form.sex }}
+    </div>
+    <div class="form-group">
+        <label for="id_dni">Email</label>
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        <label for="id_dni">Fecha de nacimiento</label>
+        {{ form.birthdate }}
+    </div>
+    <div class="form-group">
+        <label for="id_dni">DNI</label>
+        {{ form.dni }}
+    </div>
+    <button class="button1" type="submit">Guardar</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const typeField = document.getElementById("id_type");
+    const dni2Group = document.getElementById("dni2-group");
+    const dni2Field = document.getElementById("id_dni2");
+  
+    function toggleDni2Visibility() {
+      if (typeField.value === "0") {
+        dni2Group.style.display = "none";
+        dni2Field.value = null; // Establece el valor del campo a null
+      } else {
+        dni2Group.style.display = "";
+        dni2Field.disabled = false; // Habilita el campo dni2
+      }
+    }
+  
+    toggleDni2Visibility();
+    typeField.addEventListener("change", toggleDni2Visibility);
+  });
+</script>
+
+  
+</body>
+</html>
