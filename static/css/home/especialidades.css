@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el contenedor de las tarjetas */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Color de fondo opcional */
+}
+
+/* Estilos para las tarjetas */
+.card {
+    position: relative; /* Añadimos posición relativa */
+    width: 300px;
+    height: 400px; /* Altura ajustable según tus necesidades */
+    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos para el fondo de las tarjetas */
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1abc9c; /* Color de fondo de la tarjeta */
+    opacity: 0.7; /* Opacidad ajustable */
+    z-index: -1; /* Envía el fondo detrás de la tarjeta */
+}
+
+/* Estilos para la imagen */
+.card img {
+    width: 100%;
+    height: 50%;
+    display: block;
+}
+
+/* Estilos para el contenido de la tarjeta */
+.card-content {
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Añade posición relativa para contenido */
+}
+
+.card-content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Ajusta los estilos según tus necesidades */
+
+/* Estilos para la descripción emergente */
+.description-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+.description-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.description-popup h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.description-popup p {
+    font-size: 16px;
+}
