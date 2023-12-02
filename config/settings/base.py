@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps - aplicaciones creadas.
     'apps.home',
+    'import_export',
     'apps.departament',
     'apps.appointment',
     'apps.employee',
@@ -48,8 +49,9 @@ JAZZMIN_SETTINGS = {
     "site_title": "MedicalSys",
     "site_header": "Library",
     "site_brand": "MedicalSys",
-    "site_logo": "/img/base/logo.png",
-    "site_icon": "/img/base/logo.png",
+    "site_logo": "/img/base/Icono.png",
+    "site_icon": "/img/base/Icono.png",
+    "site_logo_classes": "img",
     "welcome_sign": "Ingresar las credenciales de administrador",
     "changeform_format": "carousel",
     "icons": {
